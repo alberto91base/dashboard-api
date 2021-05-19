@@ -1,0 +1,1127 @@
+openapi: '3.0.0'
+
+info:
+  version: 1.0.0
+  title: Olympic Games Tools
+  description: Api for manager the endPoint tools.
+servers:
+  - url: http://localhost:3036/
+tags:
+  - name: slowCam
+    description: |
+      Responsible for managing the corresponding olympic tool slow cam.
+  - name: public
+    description: |
+      Responsible for managing the corresponding public endPoint for olympic game.
+  - name: claves
+    description: |
+      Responsible for managing the corresponding claves tool endPoint.
+
+paths:
+
+  /olympic/slowCam/:
+    post:
+      tags:
+        - slowCam
+      description: |
+        Endpoint for save one olympic slow camm tool in local project.
+      operationId: saveOlympicCamInLocal
+      requestBody:
+        description: Post to add slowCam tool slow cam to the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSlowCam'
+      responses:
+        '201':
+          description: Olympic slow cam response
+      default:
+        description: unexpected error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+
+    get:
+      tags:
+        - slowCam
+      description: Get an olympics slow cam data
+      responses:
+        '200':
+          description: Olympic slow cam response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/ManyOlympicSlowCamGame'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /olympic/slowCam/{slowCam_id}/:
+    put:
+      tags:
+        - slowCam
+      description: Update the slowCam slow cam by id
+      operationId: updateOlympicCam
+      parameters:
+        - in: path
+          name: slowCam_id
+          schema:
+            type: string
+          required: true
+          description: Numeric ID of the slow cam to put
+          examples:
+            _idOne:
+              value: "ewrt43tgf43tg8"
+            _idTwo:
+              value: "ewfrewgu90reer8"
+      requestBody:
+        description: Put to update slowCam slow cam on the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSlowCamGame'
+      responses:
+        '200':
+          description: Olympic game update response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      security:
+        - basicAuth: [ ]
+      tags:
+        - slowCam
+      description: deletes a single olympic slow cam based on the ID supplied
+      operationId: deleteslowCamProject
+      parameters:
+        - name: slowCam_id
+          in: path
+          description: ID of olympic slow cam to delete
+          required: true
+          schema:
+            type: string
+          examples:
+            one:
+              value: 1
+            two:
+              value: 2
+      responses:
+        '204':
+          description: olympic slow cam to deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      tags:
+        - slowCam
+      parameters:
+        - in: path
+          name: slowCam_id
+          schema:
+            type: string
+          required: true
+          description: Get a slow cam by id
+          examples:
+            one:
+              value: "23453454e54vb"
+            two:
+              value: "dfty45ye5ergr"
+      responses:
+        '200':
+          description: Slow cam response for one id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/ResponseSlowCam'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /public/olympic/slowCam/:
+    get:
+      tags:
+        - public
+      description: Get an olympics data
+      responses:
+        '200':
+          description: Olympic response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/ManyOlympicSlowCamGame'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /olympic/claves/:
+    post:
+      tags:
+        - claves
+      description: |
+        Endpoint for save one olympic  claves tool in local project.
+      operationId: savewhatKnowInLocal
+      requestBody:
+        description: Post to add claves tool  to the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataClaves'
+      responses:
+        '201':
+          description: Olympic Claves response
+      default:
+        description: unexpected error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+
+    get:
+      tags:
+        - claves
+      description: Get an olympics Claves data
+      responses:
+        '200':
+          description: Olympic Claves response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/ManyOlympicClaves'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /olympic/claves/{claves_id}/:
+    put:
+      tags:
+        - claves
+      description: Update the Claves by id
+      operationId: updateClaves
+      parameters:
+        - in: path
+          name: claves_id
+          schema:
+            type: string
+          required: true
+          description: Numeric ID of the Claves to put
+          examples:
+            _idOne:
+              value: "ewrt43tgf43tg8"
+            _idTwo:
+              value: "ewfrewgu90reer8"
+      requestBody:
+        description: Put to update Claves on the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataClaves'
+      responses:
+        '200':
+          description: Olympic Claves tool update response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      security:
+        - basicAuth: [ ]
+      tags:
+        - claves
+      description: deletes a single olympic Claves tool based on the ID supplied
+      operationId: deleteClavesProject
+      parameters:
+        - name: claves_id
+          in: path
+          description: ID of olympic Claves to delete
+          required: true
+          schema:
+            type: string
+          examples:
+            one:
+              value: 1
+            two:
+              value: 2
+      responses:
+        '204':
+          description: olympic Claves to deleted
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      tags:
+        - claves
+      parameters:
+        - in: path
+          name: claves_id
+          schema:
+            type: string
+          required: true
+          description: Get a Claves by id
+          examples:
+            one:
+              value: "23453454e54vb"
+            two:
+              value: "dfty45ye5ergr"
+      responses:
+        '200':
+          description: Claves response for one id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/ResponseClaves'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /public/olympic/claves/:
+    get:
+      tags:
+        - public
+      description: Get an olympics Claves tool  data
+      responses:
+        '200':
+          description: Olympic Claves response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/ManyOlympicClaves'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+components:
+
+  schemas:
+
+    DataSlowCam:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        link:
+          type: string
+        linkName:
+          type: string
+        published:
+          type: boolean
+        shortText:
+          type: string
+        sideText:
+          type: string
+        date:
+          type: string
+        imageH1:
+          type: object
+        imageBackground:
+          type: object
+        imageBackgroundFinal:
+          type: object
+        sports:
+          type: array
+        elements:
+          type: array
+        metadata:
+          type: object
+      example:
+        title: 'title'
+        description: 'description'
+        url: 'gimnasia-ritmica'
+        link: 'http://google.es'
+        linkName: 'Vídeo del ejercicio completo'
+        published: true
+        shortText: 'title'
+        sideText: 'Ritmica'
+        date: '5/5/5'
+        imageH1: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        imageBackground: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        imageBackgroundFinal: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        sports: [ 'Gimnasia rítmica' ]
+        elements: [
+          {
+            title: 'Perfecta sincronía',
+            description: 'El conjunto español de gimnasia rítmica ha demostrado en Río una perfecta sincronía',
+            image: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+            frames: [ {
+              image: 'public/modules/camaraLenta/media/image/57b8fd15a761e-1-1-01.png',
+            } ],
+            zoom: [
+              {
+                title: '',
+                description: '',
+                imageBg: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                image: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                elements: [
+                  {
+                    title: '',
+                    photoDescription: '',
+                    description: '',
+                    paragraph: '',
+                    link: '',
+                    position: {
+                                x:0,
+                                y:0,
+                    },
+                    image: {
+                      src: 'Dry/chocolate.png',
+                      alternativeText: 'The explosion of the issue has tantra, but not everyone realizes it.',
+                    }
+                  }
+                ]
+              }
+            ],
+          },
+          {
+            title: 'Perfecta sincronía2',
+            description: 'El conjunto español de gimnasia rítmica ha demostrado en Río una perfecta sincronía2',
+            image: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+            frames: [ {
+              image: 'public/modules/camaraLenta/media/image/57b8fd15a761e-1-1-02.png',
+            } ],
+            zoom: [
+              {
+                title: '',
+                description: '',
+                imageBg: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                image: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                elements: [
+                  {
+                    title: '',
+                    photoDescription: '',
+                    description: '',
+                    paragraph: '',
+                    link: '',
+                    position: {
+                                x:0,
+                                y:0,
+                    },
+                    image: {
+                      src: 'Dry/chocolate.png',
+                      alternativeText: 'The explosion of the issue has tantra, but not everyone realizes it.',
+                    }
+                  }
+                ]
+              }
+            ],
+          }
+
+        ]
+        metadata: {
+          title: { type: String },
+          keywords: { type: String },
+          rrss: [ {
+            social: 'facebook',
+            textToShare: 'Mysterious particles, to the cosmos.',
+            image: '/img/jpg',
+            image_alternativeText: 'Cur ausus messis?',
+          } ]
+        }
+
+    DataSlowCamGame:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        link:
+          type: string
+        linkName:
+          type: string
+        published:
+          type: boolean
+        shortText:
+          type: string
+        sideText:
+          type: string
+        date:
+          type: string
+        imageH1:
+          type: object
+        imageBackground:
+          type: object
+        imageBackgroundFinal:
+          type: object
+        sports:
+          type: array
+        elements:
+          type: array
+        metadata:
+          type: object
+      example:
+        title: 'title'
+        description: 'description'
+        url: 'gimnasia-ritmica'
+        link: 'http://google.es'
+        linkName: 'Vídeo del ejercicio completo'
+        published: true
+        shortText: 'title'
+        sideText: 'Ritmica'
+        date: '5/5/5'
+        imageH1: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        imageBackground: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        imageBackgroundFinal: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        sports: [ 'Gimnasia rítmica' ]
+        elements: [
+          {
+            title: 'Perfecta sincronía',
+            description: 'El conjunto español de gimnasia rítmica ha demostrado en Río una perfecta sincronía',
+            image: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+            frames: [ {
+              image: 'public/modules/camaraLenta/media/image/57b8fd15a761e-1-1-01.png',
+            } ],
+            zoom: [
+              {
+                title: '',
+                description: '',
+                imageBg: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                image: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                elements: [
+                  {
+                    title: '',
+                    photoDescription: '',
+                    description: '',
+                    paragraph: '',
+                    link: '',
+                    position: {
+                                x:0,
+                                y:0,
+                    },
+                    image: {
+                      src: 'Dry/chocolate.png',
+                      alternativeText: 'The explosion of the issue has tantra, but not everyone realizes it.',
+                    }
+                  }
+                ]
+              }
+            ],
+          },
+          {
+            title: 'Perfecta sincronía2',
+            description: 'El conjunto español de gimnasia rítmica ha demostrado en Río una perfecta sincronía2',
+            image: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+            frames: [ {
+              image: 'public/modules/camaraLenta/media/image/57b8fd15a761e-1-1-02.png',
+            } ],
+            zoom: [
+              {
+                title: '',
+                description: '',
+                imageBg: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                image: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                elements: [
+                  {
+                    title: '',
+                    photoDescription: '',
+                    description: '',
+                    paragraph: '',
+                    link: '',
+                    position: {
+                                x:0,
+                                y:0,
+                    },
+                    image: {
+                      src: 'Dry/chocolate.png',
+                      alternativeText: 'The explosion of the issue has tantra, but not everyone realizes it.',
+                    }
+                  }
+                ]
+              }
+            ],
+          }
+        ]
+        metadata: {
+          title: { type: String },
+          keywords: { type: String },
+          rrss: [ {
+            social: 'facebook',
+            textToShare: 'Mysterious particles, to the cosmos.',
+            image: '/img/jpg',
+            image_alternativeText: 'Cur ausus messis?',
+          } ]
+        }
+
+    DataClaves:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        absoluteUrl:
+          type: string
+        published:
+          type: boolean
+        date:
+          type: date
+        image:
+          type: object
+        sports:
+          type: array
+      example:
+        title: "¿Qué ha hecho Gómez Noya para merecer esto?"
+        description: ""
+        absoluteUrl: "http://google.es/"
+        published: true
+        date: "2016/08/03"
+        image: {
+          "src": "public/modules/lasClaves/media/image/57a22ec85c69e-JJ.png",
+          "alternativeText": "Gómez Noya, en una imagen de archivo",
+        }
+        sports: [
+            "Triatlón",
+        ]
+
+
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+  responses:
+
+    ResponseSlowCam:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        link:
+          type: string
+        linkName:
+          type: string
+        published:
+          type: boolean
+        shortText:
+          type: string
+        sideText:
+          type: string
+        sideNumber:
+          type: Number
+        imageH1:
+          type: object
+        imageBackground:
+          type: object
+        imageBackgroundFinal:
+          type: object
+        date:
+          type: string
+        sports:
+          type: array
+        elements:
+          type: array
+        metadata:
+          type: object
+        zoom:
+          type: array
+      example:
+        _id: 'dfg54tet45y7'
+        title: 'title'
+        description: 'description'
+        url: 'gimnasia-ritmica'
+        link: 'http://google.es'
+        linkName: 'Vídeo del ejercicio completo'
+        published: true
+        shortText: 'title'
+        sideText: 'Ritmica'
+        date: '5/5/5'
+        imageH1: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        imageBackground: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        imageBackgroundFinal: {
+          src: '/image/j.png',
+          alternativeText: 'Alternative text',
+        }
+        sports: [ 'Gimnasia rítmica' ]
+        elements: [
+          {
+            title: 'Perfecta sincronía',
+            description: 'El conjunto español de gimnasia rítmica ha demostrado en Río una perfecta sincronía',
+            image: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+            frames: [ {
+              image: 'public/modules/camaraLenta/media/image/57b8fd15a761e-1-1-01.png',
+            } ],
+            zoom: [
+              {
+                _id: 'dfg843ntd0945t',
+                title: '',
+                description: '',
+                imageBg: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                image: {
+                  src: 'public/modules/zoom/media/image/',
+                  alternativeText: 'some text alt',
+                },
+                elements: [
+                  {
+                    title: '',
+                    photoDescription: '',
+                    description: '',
+                    paragraph: '',
+                    link: '',
+                    position: {
+                      x: 0,
+                      y: 0,
+                    },
+                    image: {
+                      src: 'Dry/chocolate.png',
+                      alternativeText: 'The explosion of the issue has tantra, but not everyone realizes it.',
+                    },
+                  }
+                ]
+              }
+            ]
+          },
+        ]
+        metadata: {
+          title: { type: String },
+          keywords: { type: String },
+          rrss: [ {
+            social: 'facebook',
+            textToShare: 'Mysterious particles, to the cosmos.',
+            image: '/img/jpg',
+            image_alternativeText: 'Cur ausus messis?',
+          } ]
+        }
+
+    ResponseClaves:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        absoluteUrl:
+          type: string
+        published:
+          type: boolean
+        date:
+          type: date
+        image:
+          type: object
+        sports:
+          type: array
+      example:
+        _id: 'sdfr436dfgt645'
+        title: "¿Qué ha hecho Gómez Noya para merecer esto?"
+        description: ""
+        absoluteUrl: "http://google.es"
+        published: true
+        date: "2016/08/03"
+        image: {
+          "src": "public/modules/lasClaves/media/image/57a22ec85c69e-JJ.png",
+          "alternativeText": "Gómez Noya, en una imagen de archivo",
+        }
+        sports: [
+            "Triatlón",
+        ]
+
+
+    ManyOlympicSlowCamGame:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        link:
+          type: string
+        linkName:
+          type: string
+        published:
+          type: boolean
+        shortText:
+          type: string
+        sideText:
+          type: string
+        date:
+          type: string
+        imageH1:
+          type: object
+        imageBackground:
+          type: object
+        imageBackgroundFinal:
+          type: object
+        sports:
+          type: array
+        elements:
+          type: array
+        metadata:
+          type: object
+        zoom:
+          type: array
+      example:
+        total: 100
+        data: {
+          _id: 'dfg54tet45y7',
+          title: 'title',
+          description: 'description',
+          url: 'gimnasia-ritmica',
+          link: 'http://google.es',
+          linkName: 'Vídeo del ejercicio completo',
+          published: true,
+          shortText: 'title',
+          sideText: 'Ritmica',
+          date: '5/5/5',
+          imageH1: {
+            src: '/image/j.png',
+            alternativeText: 'Alternative text',
+          }
+            imageBackground: {
+              src: '/image/j.png',
+              alternativeText: 'Alternative text',
+            }
+            imageBackgroundFinal: {
+              src: '/image/j.png',
+              alternativeText: 'Alternative text',
+            }
+            sports: [ 'Gimnasia rítmica' ],
+          elements: [
+            {
+              title: 'Perfecta sincronía',
+              description: 'El conjunto español de gimnasia rítmica ha demostrado en Río una perfecta sincronía',
+              image: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+              elements: [ {
+                image: 'public/modules/camaraLenta/media/image/57b8fd15a761e-1-1-01.png',
+              } ]
+            },
+            {
+              title: 'Perfecta sincronía2',
+              description: 'El conjunto español de gimnasia rítmica ha demostrado en Río una perfecta sincronía2',
+              image: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+              elements: [ {
+                image: 'public/modules/camaraLenta/media/image/57b8fd15a761e-1-1-02.png',
+              } ]
+            }
+          ],
+          metadata: {
+            title: { type: String },
+            keywords: { type: String },
+            rrss: [ {
+              social: 'facebook',
+              textToShare: 'Mysterious particles, to the cosmos.',
+              image: '/img/jpg',
+              image_alternativeText: 'Cur ausus messis?',
+            } ]
+          },
+          zoom: [
+            {
+              _id: 'dfg843ntd0945t',
+              title: '',
+              description: '',
+              imageBg: {
+                src: 'public/modules/zoom/media/image/',
+                alternativeText: 'some text alt',
+              },
+              image: {
+                src: 'public/modules/zoom/media/image/',
+                alternativeText: 'some text alt',
+              },
+              elements: [
+                {
+                  title: '',
+                  photoDescription: '',
+                  description: '',
+                  paragraph: '',
+                  link: '',
+                  position: {
+                    x: 0,
+                    y: 0,
+                  },
+                  image: {
+                    src: 'Dry/chocolate.png',
+                    alternativeText: 'The explosion of the issue has tantra, but not everyone realizes it.',
+                  },
+                }
+              ]
+            }
+          ]
+
+        }
+
+    ManyOlympicDecide:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        published:
+          type: boolean
+        shortText:
+          type: string
+        date:
+          type: string
+        image:
+          type: object
+        sports:
+          type: array
+        elements:
+          type: array
+        metadata:
+          type: object
+      example:
+        total: 100
+        data: {
+          title: 'title',
+          description: 'description',
+          url: 'gimnasia-ritmica',
+          published: true,
+          shortText: 'title',
+          date: '5/5/5',
+          image: {
+            src: '/image/j.png',
+            alternativeText: 'Alternative text',
+          },
+          sports: [ 'Gimnasia rítmica' ]
+            elements: [
+              {
+                id: 1,
+                description: 'El conjunto español de gimnasia rítmica ha demostrado en Río una perfecta sincronía',
+                paragraph: 'All shining sinners capture each other, only great believers have a meditation.',
+                image: {
+                  src: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+                  alternaticeText: 'text alternative',
+                  photoDescription: 'description foto',
+                },
+                likes: 2,
+              },
+            ],
+          metadata: {
+            title: { type: String },
+            keywords: { type: String },
+            rrss: [ {
+              social: 'facebook',
+              textToShare: 'Mysterious particles, to the cosmos.',
+              image: '/img/jpg',
+              image_alternativeText: 'Cur ausus messis?',
+            } ]
+          }
+        }
+
+    ManyOlympicWhatKnow:
+      type: object
+      properties:
+        title:
+          type: string
+        url:
+          type: string
+        published:
+          type: boolean
+        shortText:
+          type: string
+        date:
+          type: date
+        image:
+          type: object
+        imageBackground:
+          type: object
+        frontCard:
+          type: object
+        sports:
+          type: array
+        elements:
+          type: array
+        metadata:
+          type: object
+      example:
+        total: 100
+        data: {
+          title: '¿Qué sabes de Maialen Chourraut?',
+          url: 'maialen-chourraut',
+          published: true,
+          shortText: 'Maialen Chourraut',
+          date: '5/5/5',
+          image: {
+            src: '/image/j.png',
+            alternativeText: 'Alternative text',
+          },
+          imageBackground: {
+            src: '/image/j.png',
+            alternativeText: 'Alternative text',
+          },
+          frontCard: {
+            paragraph: 'some text',
+            image: {
+              src: '/image/j.png',
+              alternativeText: 'Alternative text',
+            },
+          },
+          sports: [ 'Gimnasia rítmica' ]
+            elements: [
+              {
+                id: 1,
+                paragraph: 'All shining sinners capture each other, only great believers have a meditation.',
+                image: {
+                  src: 'public/modules/camaraLenta/media/image/57b8a3e1ad829-tramo1.png',
+                  alternaticeText: 'text alternative',
+                },
+                answers: [
+                  {
+                    text: 'some test questiom?',
+                    correct: true,
+                  },
+                  {
+                    text: 'some test questiom?',
+                    correct: false,
+                  }
+                ],
+              },
+            ],
+          metadata: {
+            title: { type: String },
+            keywords: { type: String },
+            rrss: [ {
+              social: 'facebook',
+              textToShare: 'Mysterious particles, to the cosmos.',
+              image: '/img/jpg',
+              image_alternativeText: 'Cur ausus messis?',
+            } ]
+          },
+        }
+
+    ManyOlympicClaves:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        absoluteUrl:
+          type: string
+        published:
+          type: boolean
+        date:
+          type: date
+        image:
+          type: object
+        sports:
+          type: array
+      example:
+        total: 100
+        data: {
+          title: "¿Qué ha hecho Gómez Noya para merecer esto?",
+          description: "",
+          absoluteUrl: "http://google.es",
+          published: true,
+          date: "2016/08/03",
+          image: {
+            "src": "public/modules/lasClaves/media/image/57a22ec85c69e-JJ.png",
+            "alternativeText": "Gómez Noya, en una imagen de archivo",
+          },
+          sports: [
+              "Triatlón",
+          ]
+        }
+
+    BadRequestError:
+      description: Data provided is invalid or not data found
